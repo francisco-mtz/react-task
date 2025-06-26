@@ -1,7 +1,6 @@
 import { Design } from "./_internal/Design";
 import "./App.css";
-import { useEffect } from "react";
-import { getItems } from "./_internal/api";
+import { CardList } from "./components/CardList";
 /**
  * # Intructions:
  *
@@ -59,25 +58,15 @@ import { getItems } from "./_internal/api";
  *
  */
 export default function App() {
-  useEffect(() => {
-    const logItems = async () => {
-      const items = await getItems({ page: 1, pageSize: 10 });
-      const items2 = await getItems({ page: 200, pageSize: 5 });
-      console.log("items: ", items);
-      console.log("items2: ", items2);
-    };
-    logItems().catch((e) => console.error(e));
-  }, []);
-
   return (
     <div className="App">
       <h1 className="centered">Design System Card Component</h1>
       <h2 className="centered">Design Reference</h2>
-      <div className="centered">
+      <h2 className="centered">
         <Design />
-      </div>
+      </h2>
       <h2 className="centered">Components:</h2>
-      {/* Add component Here */}
+      <CardList />
     </div>
   );
 }
